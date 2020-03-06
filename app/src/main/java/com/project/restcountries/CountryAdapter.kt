@@ -1,5 +1,6 @@
 package com.project.restcountries
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,10 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.restcountries.model.Countries
+import com.project.restcountries.model.Country2
+import kotlin.coroutines.coroutineContext
 
-class CountryAdapter(var countryList: MutableList<Countries>): RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
+class CountryAdapter(var countryList: List<Country2>, val context: Context): RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context!!).inflate(R.layout.list_item, parent, false)
         return ViewHolder(view)
@@ -21,9 +24,9 @@ class CountryAdapter(var countryList: MutableList<Countries>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: CountryAdapter.ViewHolder, position: Int) {
-        holder.name.text = countryList[position].countries.name
-        holder.capital.text = countryList[position].countries.capital
-        Glide.with(holder.flag).load(countryList[position].countries.flag).into(holder.flag)
+        holder.name.text = countryList[position].name
+        holder.capital.text = countryList[position].capital
+        Glide.with(context).load(countryList[position].flag).into(holder.flag)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
