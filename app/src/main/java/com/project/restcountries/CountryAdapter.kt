@@ -23,13 +23,13 @@ class CountryAdapter(var countryList: Countries): RecyclerView.Adapter<CountryAd
     override fun onBindViewHolder(holder: CountryAdapter.ViewHolder, position: Int) {
         holder.name.text = countryList.countries[position].name
         holder.capital.text = countryList.countries[position].capital
-        Glide.with(holder.photo).load(countryList.countries[position].photo).into(holder.photo)
+        Glide.with(holder.flag).load(countryList.countries[position].flag).into(holder.flag)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val name: TextView = itemView.findViewById(R.id.country_name)
         val capital: TextView = itemView.findViewById(R.id.country_capital)
-        val photo: ImageView = itemView.findViewById(R.id.country_flag)
+        val flag: ImageView = itemView.findViewById(R.id.country_flag)
 
     }
 
