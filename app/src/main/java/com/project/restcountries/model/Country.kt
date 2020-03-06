@@ -9,5 +9,5 @@ data class CountryProperty(
     val flag: String
 )
 data class Countries(
-    val countries: MutableList<CountryProperty>
+    val countries: CountryProperty
 )

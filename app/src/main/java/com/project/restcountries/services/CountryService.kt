@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface CountryService {
     @GET("all")
-    fun getServices() : Call<Countries>
+    fun getServices() : Call<MutableList<Countries>>
 
     companion object Factory {
         fun create(): CountryService {

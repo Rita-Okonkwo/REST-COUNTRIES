@@ -20,15 +20,15 @@ class MainActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.list_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val characterService = CountryService.Factory.create()
-        val countries: Call<Countries> = characterService.getServices()
-        countries.enqueue(object : Callback<Countries> {
-            override fun onFailure(call: Call<Countries>, t: Throwable) {
+        val countries: Call<MutableList<Countries>> = characterService.getServices()
+        countries.enqueue(object : Callback<MutableList<Countries> >{
+            override fun onFailure(call: Call<MutableList<Countries>>, t: Throwable) {
                 Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
-                call: Call<Countries>,
-                response: Response<Countries>
+                call: Call<MutableList<Countries>>,
+                response: Response<MutableList<Countries>>
             ) {
                 var list = response.body()!!
                 recyclerView.adapter = CountryAdapter(list)
