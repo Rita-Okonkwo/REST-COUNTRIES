@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class CountryProperty(
     val name: String,
     val capital: String,
-    val photo: String
+    val flag: String
 )
 data class Countries(
     val countries: MutableList<CountryProperty>
