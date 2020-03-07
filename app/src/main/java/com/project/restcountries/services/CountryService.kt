@@ -17,14 +17,14 @@ interface CountryService {
 
     companion object Factory {
         fun create(): CountryService {
-            val interceptor = HttpLoggingInterceptor()
+          /*  val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder()
                 .connectTimeout(2, TimeUnit.MINUTES)
                 .readTimeout(2, TimeUnit.MINUTES)
                 .writeTimeout(2, TimeUnit.MINUTES)
                 .addInterceptor(interceptor)
-                .build()
+                .build()*/
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://restcountries.eu/rest/v2/")

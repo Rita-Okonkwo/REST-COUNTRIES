@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("XXXX", response.body().toString())
 
                 var list = response.body()!!
-                recyclerView.adapter = CountryAdapter(list)
+                recyclerView.adapter = CountryAdapter(list, this@MainActivity)
 
 
             }

@@ -8,14 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.ahmadrosid.svgloader.SvgLoader
 import com.project.restcountries.model.Countries
 import com.project.restcountries.model.Country2
 import java.net.URL
 import kotlin.coroutines.coroutineContext
 
-class CountryAdapter(var countryList: List<Country2>): RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
+class CountryAdapter(var countryList: List<Country2>, var activity: MainActivity): RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
     lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryAdapter.ViewHolder {
         context = parent.context!!
@@ -30,10 +29,11 @@ class CountryAdapter(var countryList: List<Country2>): RecyclerView.Adapter<Coun
     override fun onBindViewHolder(holder: CountryAdapter.ViewHolder, position: Int) {
         holder.name.text = countryList[position].name
         holder.capital.text = countryList[position].capital
-        Glide.with(holder.flag.context)
-            .load(countryList[position].flag)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(holder.flag)
+
+        SvgLoader.pluck()
+            .with(activity)
+            .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
+            .load(countryList[position].flag, holder.flag)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
